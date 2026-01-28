@@ -6,39 +6,48 @@ def getRandomWord():
     words_file = os.path.join(scriptDirectory, "randomWords.txt")
     
     with open(words_file, 'r') as file:
-        w = [w.strip() for word in file.readlines()]
-        return w
-
-
+        words = [word.strip() for word in file.readlines()]
+        return random.choice(words)
+    
 
 
 def getRandom():
-    ran = random.randint(0,3)
+    topOfRange = 9200000000000000000 #close to 64 bit maximum
+    bottomOfRange = -9200000000000000000 #close to 64 bit min
+    ran = random.randint(0, 3)
     if ran > 2:
-        return random.randint(-9,999,999, 999,999,999) #for now between this range
+        return str(random.randint(-9999999, 999999999)) #range of numbers
     else:
-        return getRandomWord
+        return getRandomWord()
+    
+
 
 def createRandomLine():
     randomStr = ""
     for i in range(10):
-        randomStr += getRandom
-        return getRandom
-
+        randomStr += getRandom() + " "  
+    return randomStr + "\n" 
 
 
 
 def main():
     RandomFileName = "RandomFile"
-
-    for i in range(5):
+    
+    for i in range(5): #this just adds a string of random numbers at the end to prevent conflicts
         fileNumber = random.randint(0, 9)
-        RandomFileName + fileNumber
-
-    fileLength = random.randomint(1, 1000)
+        RandomFileName += str(fileNumber)  
+    
+    RandomFileName += ".txt" #add file type
+    
+    fileLength = random.randint(1, 1000) #sets length of file (anywhere between 1 and 1000 lines)
+    
     try:
         with open(RandomFileName, "w") as file:
             for i in range(fileLength):
-                file.writelines(createRandomLine)
-    except FileExistsError:
-        print("FileExistsError")
+                file.write(createRandomLine())
+        print(f"File '{RandomFileName}' created successfully with {fileLength} lines!")
+    except Exception as e:
+        print(f"Error: {e}")
+
+if __name__ == "__main__":
+    main()
