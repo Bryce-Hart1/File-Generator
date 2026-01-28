@@ -1,9 +1,14 @@
 import random
-#maybe use wonderwords
-
+import os
 
 def getRandomWord():
-    return
+    scriptDirectory = os.path.dirname(os.path.abspath(__file__))
+    words_file = os.path.join(scriptDirectory, "randomWords.txt")
+    
+    with open(words_file, 'r') as file:
+        w = [w.strip() for word in file.readlines()]
+        return w
+
 
 
 
