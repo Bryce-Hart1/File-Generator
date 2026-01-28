@@ -3,10 +3,10 @@ This is a supporting application to swiftSearch, meant to create files for bench
 The project I am referencing can be found at https://github.com/Bryce-Hart1/swiftSearch
 I am not responsible for anything you generate with this program.
 
-##Overview
+## Overview
 Generates a file with a random size, filled with a random assortment of words from the supported randomWords.txt file
 
-##Usage 
+## Usage 
 Clone or download this repository
 run main.py
 
