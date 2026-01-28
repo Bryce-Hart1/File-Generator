@@ -16,7 +16,7 @@ def getRandom():
     bottomOfRange = -9200000000000000000 #close to 64 bit min
     ran = random.randint(0, 3)
     if ran > 2:
-        return str(random.randint(-9999999, 999999999)) #range of numbers
+        return str(random.randint(topOfRange, bottomOfRange)) #range of numbers
     else:
         return getRandomWord()
     
